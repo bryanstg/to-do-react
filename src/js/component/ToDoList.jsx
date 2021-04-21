@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Tasks } from "./Tasks.jsx";
 import { Error } from "./Error.jsx";
 
@@ -39,7 +39,7 @@ export function ToDoList() {
 				{error && (
 					<Error
 						message="Tarea invalida, debes llenar el campo"
-						errorStyle="alert alert-danger"
+						errorStyle="alert alert-success"
 					/>
 				)}
 				<Tasks tasks={tasks} deleteTask={deleteTask} />
