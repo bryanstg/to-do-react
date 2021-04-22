@@ -1,7 +1,9 @@
 .todolist {
     display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    color: white;
     background-color: #444444;
     width: 100%;
     min-height: 100vh;
@@ -32,4 +34,6 @@
 .todolist__box--input:focus {
     border-radius: 1.5rem;
 }
-
+.todolist__box--list-size {
+    color: #000;
+}
