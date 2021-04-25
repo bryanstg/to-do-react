@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes, { bool, string } from "prop-types";
 
-export function Tasks({ tasks, deleteTask }) {
+export function Tasks({ tasks, deleteTask, updateUser, user }) {
 	return (
 		<ul className="todolist__list">
 			{tasks.map((task, index) => {
@@ -10,7 +10,14 @@ export function Tasks({ tasks, deleteTask }) {
 						{task.label}
 						<span
 							className="delete"
-							onClick={() => deleteTask(index)}>
+							onClick={event => {
+								console.log(tasks.length);
+								if (tasks.length === 1) {
+									updateUser(user);
+								} else {
+									deleteTask(index);
+								}
+							}}>
 							{"X"}
 						</span>
 					</li>
@@ -22,5 +29,7 @@ export function Tasks({ tasks, deleteTask }) {
 
 Tasks.propTypes = {
 	tasks: PropTypes.array,
-	deleteTask: PropTypes.func
+	deleteTask: PropTypes.func,
+	updateUser: PropTypes.func,
+	user: PropTypes.object
 };
