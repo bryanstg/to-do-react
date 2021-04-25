@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { ToDoList } from "./ToDoList.jsx";
 
 export function Home() {
-	const [user, setUser] = useState("bryanstgarcia");
+	const [user, setUser] = useState({
+		user: "",
+		ready: false
+	});
 	const APIuri = "https://assets.breatheco.de/apis/fake/todos/user";
 
-	/* let checkUser = useEffect(() => {
-		fetch(`${APIuri}/${user}`, {
+	const createUser = userInput => {
+		fetch(`${APIuri}/${userInput}`, {
 			method: "POST",
 			body: JSON.stringify([]),
 			headers: {
@@ -15,21 +18,71 @@ export function Home() {
 		})
 			.then(response => {
 				if (response.ok) {
-					console.log(response);
 					return response.json();
 				}
 				if (response.status === 400) {
 					console.log("You already have an account created");
 				}
 			})
-			.then(data => console.log(data + "without json"))
+			.then(data => {
+				setUser({ ...user, ready: true });
+			})
+			.then(data => {})
 			.catch(error => {
-				console.log(error);
+				throw new Error(error);
 			});
-	}, [user]); */
+	};
+
+	const updateUser = userName => {
+		fetch(`${APIuri}/${userName.user}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+			.then(response => {
+				if (response.ok) {
+					return response.json();
+				}
+			})
+			.then(data => {
+				console.log(data);
+				createUser(userName.user);
+			})
+			.catch();
+	};
+
 	return (
 		<React.Fragment>
-			<ToDoList user={user} APIuri={APIuri} />
+			{user.ready ? (
+				<div className="intro">
+					<ToDoList
+						user={user}
+						APIuri={APIuri}
+						updateUser={updateUser}
+						createUser={createUser}
+					/>
+				</div>
+			) : (
+				<div className="home-input">
+					<input
+						className="user-name"
+						type="text"
+						name="userName"
+						/* value={user.user}  PORQUE AL SECUESTRAR EL VALUE, NO PUEDO ESCRIBIR*/
+						id="userName"
+						placeholder="Ingresa tu nombre de usuario"
+						onChange={event => {
+							setUser({ ...user, user: `${event.target.value}` });
+						}}
+						onKeyUp={event => {
+							if (event.key === "Enter") {
+								createUser(user.user);
+							}
+						}}
+					/>
+				</div>
+			)}
 		</React.Fragment>
 	);
 }
@@ -37,22 +90,3 @@ export function Home() {
 //ingresar username
 //if exist go to todo
 //else, create and go to todo
-
-{
-	/* <form>
-	<input
-		className="userName"
-		type="text"
-		name="userName"
-		value={user}
-		id="userName"
-		placeholder="Ingresa tu nombre de usuario"
-		onKeyUp={event => {
-			if (event.key === "Enter") {
-				setUser(user);
-			}
-		}}
-	/>
-	<button type="submit">Crea tu lista</button>
-</form> */
-}
