@@ -10,7 +10,8 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 2rem;
+    min-height: 2rem;
+    height: auto;
     margin: 0.2rem 0;
     padding: 0.8rem 1rem;
     font-size: 1rem;
@@ -18,14 +19,18 @@
     border-radius: 1rem;
 }
 .todolist__list--task:hover {
-    background-color: rgb(97, 179, 111);
+    background-color: rgb(255, 64, 64);
     list-style: none;
 }
 .delete {
-    padding: 0 0.8rem;
-}
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+
+} 
 .delete:hover {
-    padding: 0 0.8rem;
-    background-color: rgb(233, 125, 125);
-    border-radius: 1rem;
+    padding: 0 0.5rem;
+    background-color: rgb(250, 33, 33);
+
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 2px 2px rgb(235, 73, 73);
 }
