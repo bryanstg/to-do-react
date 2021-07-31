@@ -1,7 +1,9 @@
 .todolist {
     display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    color: white;
     background-color: #444444;
     width: 100%;
     min-height: 100vh;
@@ -11,12 +13,13 @@
     display: flex;
     justify-content: space-between;
     flex-flow: column nowrap;
-    width: 20rem;
+    width: 30rem;
+    min-width: 25rem;
     min-height: 20rem;
     height: auto;
     background-color: rgb(255, 255, 255);
     border-radius: 0.5rem;
-    padding: 1.5rem;
+    padding: 1rem;
     margin: 3rem 0;
 }
 .todolist__box--input {
@@ -29,7 +32,9 @@
     border-radius: 1.5rem;
 }
 
-.todolist__box--input:focus {
-    border-radius: 1.5rem;
+.todolist__box--input:focus,  .todolist__box--input:active {
+    outline: none;
 }
-
+.todolist__box--list-size {
+    color: #000;
+}
