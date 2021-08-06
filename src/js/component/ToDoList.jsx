@@ -74,35 +74,44 @@ export function ToDoList(props) {
 	useEffect(() => getTasks(), [props.user]);
 
 	return (
-		<div className="todolist">
-			<h3>{`Hello ${props.user.user}`}</h3>
-			<div className="todolist__box">
-				<input
-					className="todolist__box--input"
-					type="text"
-					value={task.label}
-					placeholder="Write your task"
-					onChange={event => {
-						setTask({ ...task, label: `${event.target.value}` });
-					}}
-					onKeyUp={sendTasks}
-				/>
-				{error && (
-					<Error
-						message="Por favor ingresa una tarea válida."
-						errorStyle="alert alert-danger"
+		<div className="todolist-container">
+			<div className="todolist">
+				<div className="todolist__welcome">
+					<h3>{`${props.user.user.toUpperCase()}`}</h3>
+					<input
+						className="todolist__box--input"
+						type="text"
+						value={task.label}
+						placeholder="Write your task"
+						onChange={event => {
+							setTask({
+								...task,
+								label: `${event.target.value}`
+							});
+						}}
+						onKeyUp={sendTasks}
 					/>
-				)}
+				</div>
+				<div className="todolist__box">
+					{error && (
+						<Error
+							message="Por favor ingresa una tarea válida."
+							errorStyle="alert alert-danger"
+						/>
+					)}
 
-				<Tasks
-					tasks={tasks}
-					deleteTask={deleteTask}
-					updateUser={props.updateUser}
-					user={props.user}
-				/>
+					<Tasks
+						tasks={tasks}
+						deleteTask={deleteTask}
+						updateUser={props.updateUser}
+						user={props.user}
+					/>
 
-				<div className="todolist__box--list-size">
-					{`${tasks.length} item${tasks.length > 1 ? "'s" : ""} left`}
+					<div className="todolist__box--list-size">
+						{`${tasks.length} item${
+							tasks.length > 1 ? "'s" : ""
+						} left`}
+					</div>
 				</div>
 			</div>
 		</div>
