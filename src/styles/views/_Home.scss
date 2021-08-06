@@ -1,0 +1,92 @@
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background: rgb(32,251,131);
+    background: linear-gradient(90deg, rgba(32,251,131,1) 0%, rgba(148,187,233,1) 100%);
+
+}
+.home {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    min-width: 20rem;
+    width: 29rem;
+    min-height: 20rem;
+    height: 25rem;
+    padding: 1rem 1.5rem;
+    background-color: #1d1c1c;
+    box-shadow: 5px 7px 1px 2px #242424 ;
+    border-radius: 1rem;
+}
+.home__title {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    min-width: 16rem;
+    width: 22rem;
+    min-height: auto;
+    height: 15rem;
+    color: #FFFFFF;
+    h1 {
+        color: #FFFFFF;
+        border-bottom: 3px solid #FFFFFF;
+        border-width: 3px;
+        border-image:  linear-gradient(90deg, rgba(32,251,131,1) 0%, rgba(148,187,233,1) 100%);
+        border-image-slice: 1;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    p {
+        height: auto;
+        text-align: center;
+        min-width: auto;
+        width: 20rem;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+}
+.home__input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 19rem;
+    width: auto;
+    min-height: auto;
+    height: 20%;
+}
+.user-name {
+    min-width: 19rem;
+    width: auto;
+    padding: 0.45rem 2rem;
+    margin: 1rem 0;
+
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    
+    background-color: rgb(24, 24, 24);
+    border-radius: 2rem;
+    outline: none;
+
+    &::placeholder {
+        font-size: 1rem;
+        color: rgba(202, 197, 197, 0.568);
+    }
+
+    &:focus {
+        border-bottom: 1px solid rgba(23,109,163,1);
+        border-right: 1px solid rgba(23,109,163,1);
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .home {
+        border-radius: 0rem;
+    }
+}
