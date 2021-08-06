@@ -1,7 +1,7 @@
 .todolist__list {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: 10rem;
     height: auto;
     padding: 1.2rem;
