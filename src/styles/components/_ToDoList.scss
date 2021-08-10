@@ -46,6 +46,7 @@
     display: flex;
     justify-content: space-between;
     flex-flow: column nowrap;
+    min-height: auto;
     height: calc(100% - 5rem);
 }
 .todolist__box--input {
@@ -67,7 +68,10 @@
     color: #FFFFFF;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 610px) {
+    .todolist {
+        height: auto;
+    }
     .todolist__welcome {
         flex-flow: column nowrap;
         height: auto;
